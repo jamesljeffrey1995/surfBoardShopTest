@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>{{ title }} - Page</title>
+</head>
+<body>
+	{% if current_user.is_authenticated %}
+	<li style="display:inline-block;">
+		<a href="{{ url_for('home') }}">Home</a>
+	</li>
+	<li style="display:inline-block;">
+		<a href="{{ url_for('about') }}">About</a>
+	</li>
+	<li style="display:inline-block;">
+                <a href="{{ url_for('submit_board') }}">Post</a>
+        </li>
+	<li style="display:inline-block;">
+                <a href="{{ url_for('account') }}">Account</a>
+	</li>
+        <li style="display:inline-block;">
+                <a href="{{ url_for('logout') }}">Logout</a>
+        </li>
+	<li style="display:inline-block;">
+		<p style="font-size:80%; color:blue;"> {{ current_user.first_name }} {{ current_user.last_name }} </p>
+        </li>
+	{% else %}
+	<li style="display:inline-block;">
+                <a href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li style="display:inline-block;">
+                <a href="{{ url_for('about') }}">About</a>
+        </li>
+        <li style="display:inline-block;">
+                <a href="{{ url_for('register') }}">Register</a>
+        </li>
+        <li style="display:inline-block;">
+                <a href="{{ url_for('login') }}">Login</a>
+	</li>
+	
+	{% endif %}
+{% block body_content %}{% endblock %}
+</body>
+</html>

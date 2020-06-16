@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block body_content %}
+<!-- container for the form -->
+<!-- the 'form-group' class means that the items in the form will be grouped correctly when displayed -->
+<div class="form-group">
+    <!-- the form -->
+    <form method='POST' action=''>
+	{{ form.hidden_tag() }}
+	{{ form.name.label }}
+        {{ form.name }}
+		{% if form.name.errors %}
+            <!-- surround the displayed errors in a error div tag, this can then be styled later to be red etc. -->
+            <div class="error">
+                <!-- for each error in the errors for the first_name input field -->
+                {% for error in form.name.errors %}
+                    <!-- display the error -->
+                    <span>{{ error }}</span>
+                <!-- end the for-loop -->
+                {% endfor %}
+            </div>
+	{% endif %}
+	<br>
+
+	{{ form.volume.label }}
+        {{ form.volume }}
+        <br>
+	{{ form.size.label }}
+        {{ form.size }}
+        <br>
+	{{ form.price.label }}
+	{{ form.price }}
+        <br>
+	{{ form.style.label }}
+	{{ form.style }}
+	<br>
+	{{ form.stock.label }}
+	{{ form.stock }}
+	<br>
+	{{ form.submit }}
+    </form>
+</div>
+{% endblock %}
